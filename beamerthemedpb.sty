@@ -1,0 +1,120 @@
+% dp's Beamer template
+
+% https://tex.stackexchange.com/questions/146529/design-a-custom-beamer-theme-from-scratch
+% https://martinbjeldbak.com/ultimate-beamer-theme-list/
+% https://www.sessions.edu/color-calculator/   #a60000
+
+% Requirements
+\RequirePackage{tikz}
+\usepackage[no-math]{fontspec}
+\usepackage{lastpage}
+\usepackage{graphicx}
+
+
+% Colors
+\definecolor{dpbPrimary}{RGB}{166,0,0}
+\definecolor{dpbPrimary2}{RGB}{166,42,0}
+\definecolor{dpbSecondary}{RGB}{0,158,163}
+\definecolor{dpbTertiary}{RGB}{79,163,0}
+\definecolor{dpbQuaternary}{RGB}{166,0,83}
+\definecolor{dpbBlack}{RGB}{0,0,0}
+\definecolor{dpbVeryLightGray}{RGB}{175,184,173}
+\definecolor{dpbTitlePageHeader}{RGB}{166,0,0}
+\definecolor{dpbTitlePageSubtitle}{RGB}{0,158,163}
+
+\setbeamercolor{palette primary}{fg=dpbPrimary}
+\setbeamercolor{palette secondary}{fg=dpbSecondary}
+\setbeamercolor{palette tertiary}{fg=dpbTertiary}
+\setbeamercolor{palette quaternary}{fg=dpbQuaternary}
+\setbeamercolor{alerted text}{fg=dpbQuaternary}
+\setbeamercolor{structure}{fg=dpbSecondary}
+
+
+% Fonts
+\usefonttheme{professionalfonts}
+%\setsansfont{Ubuntu}
+\setsansfont{EB Garamond}
+\setmonofont{Ubuntu Mono}
+\setbeamerfont{title}{family=\fontspec{Ubuntu}, size=\huge}
+\setbeamerfont{author}{family=\fontspec{Ubuntu}, shape=\itshape, size=\large}
+\setbeamerfont{frametitle}{family=\fontspec{Ubuntu}}
+\setbeamerfont{institute}{family=\fontspec{Ubuntu}, size=\normalsize, shape=\normalfont}
+\setbeamerfont{date}{family=\fontspec{Ubuntu}, size=\footnotesize, shape=\normalfont}
+\setbeamerfont{footer}{family=\fontspec{Ubuntu Light}}
+
+
+% Misc
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{itemize items}{\textasteriskcentered}
+
+
+% Title frame
+
+\setbeamertemplate{title page}{
+	\usebeamercolor{title page}
+	\topskip0pt
+	\vspace*{\fill}
+	\begin{center}
+		\textcolor{dpbTitlePageHeader}{\usebeamerfont{title} \inserttitle}
+		
+		\vskip 0.15cm
+	
+		\textcolor{dpbTitlePageHeader}{\usebeamerfont{subtitle} \insertsubtitle}
+		
+		\vskip 1cm
+	
+		\usebeamerfont{author} \insertauthor
+		
+		\vskip 1cm
+	
+		\textcolor{dpbSecondary}{
+		\usebeamerfont{institute} {\insertinstitute}}
+		%\hskip 0.08cm \textemdash
+		%\textendash
+		
+		\textcolor{dpbSecondary}{\usebeamerfont{date} {\insertdate}}
+	\end{center}
+	\vspace*{\fill}
+	%
+}
+
+\newcommand{\inserttitleframe}{%
+	\begin{frame}[plain]
+		\titlepage
+	\end{frame}
+}
+
+
+% Header of frame
+\setbeamertemplate{frametitle}{
+	\begin{beamercolorbox}[wd=0.99\paperwidth]{frametitle}
+		\ifx\insertframesubtitle\@empty%
+		\textcolor{dpbPrimary2}{\insertframetitle}
+		\else%
+		\textcolor{dpbPrimary2}{\insertframetitle}
+%		\textcolor{dpbBlack}{\textendash}
+		
+		\textcolor{dpbPrimary2}{\normalsize\insertframesubtitle}
+		\fi
+	\end{beamercolorbox}
+}
+
+
+% Footer
+\setbeamertemplate{footline}{
+	\textcolor{dpbVeryLightGray}{\usebeamerfont{footer}{
+		\noindent\hfil\rule{\textwidth}{.1pt}\hfil
+		\vskip 0.1cm
+		\centering
+		\resizebox{\textwidth}{!}{%
+			\begin{tabular}{@{}lccr@{}}
+				{\hskip 0.1cm \inserttitle} &
+				{\textcopyright} {\insertauthor} &
+				{\insertinstitute} {\textendash} {\insertdate} &
+				page {\thepage} of {\pageref{LastPage}} \hskip 0.1cm
+			\end{tabular}%
+		}
+		\vskip 0.06cm
+	}}
+}
+

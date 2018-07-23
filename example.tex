@@ -1,0 +1,59 @@
+\documentclass{beamer}
+\usepackage{lipsum}
+\title{The Proof of Nothing}
+\subtitle{Some subtitle}
+\date{2018-07-21}
+\institute{Università degli Studi di Trento, DISI}
+\author{Daniele Parmeggiani}
+
+\usetheme{dpb}
+
+\begin{document}
+
+\inserttitleframe
+
+\begin{frame}{Table of contents}
+	\tableofcontents
+\end{frame}
+
+\begin{frame} 
+\frametitle{There Is No Largest Prime Number} 
+\framesubtitle{The proof uses \textit{reductio ad absurdum}.} 
+\begin{theorem}
+There is no largest prime number. \end{theorem} 
+\begin{enumerate} 
+\item<1-| alert@1> Suppose $p$ were the largest prime number. 
+\item<2-> Let $q$ be the product of the first $p$ numbers. 
+\item<3-> Then $q+1$ is not divisible by any of them. 
+\item<1-> But $q + 1$ is greater than $1$, thus divisible by some prime
+number not in the first $p$ numbers.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{A longer title}
+\begin{itemize}
+\item one
+\item two\footnote{the number 2}
+\end{itemize}
+\end{frame}
+
+\section{Introduction}
+\begin{frame}{Itemize}
+\begin{itemize}
+\item Here you can see an itemization
+\begin{itemize}
+\item It has items
+\begin{itemize}
+\item The items are below each other
+\end{itemize}
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[plain]{Plain frame with title}
+\lipsum[1]
+\end{frame}
+\end{document}
+
+\end{document}
+
