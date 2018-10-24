@@ -8,6 +8,7 @@
 \usepackage[no-math]{fontspec}
 \usepackage{lastpage}
 \usepackage{graphicx}
+\usepackage{datetime2}
 
 
 % Colors
@@ -17,7 +18,7 @@
 \definecolor{dpbTertiary}{RGB}{79,163,0}
 \definecolor{dpbQuaternary}{RGB}{166,0,83}
 \definecolor{dpbBlack}{RGB}{0,0,0}
-\definecolor{dpbVeryLightGray}{RGB}{175,184,173}
+\definecolor{dpbVeryLightGray}{RGB}{180,189,178}
 \definecolor{dpbTitlePageHeader}{RGB}{166,0,0}
 \definecolor{dpbTitlePageSubtitle}{RGB}{0,158,163}
 
@@ -27,19 +28,21 @@
 \setbeamercolor{palette quaternary}{fg=dpbQuaternary}
 \setbeamercolor{alerted text}{fg=dpbQuaternary}
 \setbeamercolor{structure}{fg=dpbSecondary}
+\setbeamercolor{subsection in toc}{fg=dpbTertiary}
+\setbeamercolor{subsubsection in toc}{fg=dpbQuaternary}
 
 
 % Fonts
 \usefonttheme{professionalfonts}
 %\setsansfont{Ubuntu}
-\setsansfont{EB Garamond}
-\setmonofont{Ubuntu Mono}
-\setbeamerfont{title}{family=\fontspec{Ubuntu}, size=\huge}
-\setbeamerfont{author}{family=\fontspec{Ubuntu}, shape=\itshape, size=\large}
-\setbeamerfont{frametitle}{family=\fontspec{Ubuntu}}
-\setbeamerfont{institute}{family=\fontspec{Ubuntu}, size=\normalsize, shape=\normalfont}
-\setbeamerfont{date}{family=\fontspec{Ubuntu}, size=\footnotesize, shape=\normalfont}
-\setbeamerfont{footer}{family=\fontspec{Ubuntu Light}}
+\setsansfont{}
+\setmonofont{IBM Plex Mono}
+\setbeamerfont{title}{family=\fontspec{EB Garamond}, size=\huge}
+\setbeamerfont{author}{family=\fontspec{EB Garamond}, shape=\itshape, size=\large}
+\setbeamerfont{frametitle}{family=\fontspec{EB Garamond}}
+\setbeamerfont{institute}{family=\fontspec{EB Garamond}, size=\normalsize, shape=\normalfont}
+\setbeamerfont{date}{family=\fontspec{EB Garamond}, size=\footnotesize, shape=\normalfont}
+\setbeamerfont{footer}{family=\fontspec{EB Garamond}}
 
 
 % Misc
@@ -48,7 +51,6 @@
 
 
 % Title frame
-
 \setbeamertemplate{title page}{
 	\usebeamercolor{title page}
 	\topskip0pt
@@ -88,13 +90,19 @@
 \setbeamertemplate{frametitle}{
 	\begin{beamercolorbox}[wd=0.99\paperwidth]{frametitle}
 		\ifx\insertframesubtitle\@empty%
-		\textcolor{dpbPrimary2}{\insertframetitle}
-		\else%
-		\textcolor{dpbPrimary2}{\insertframetitle}
-%		\textcolor{dpbBlack}{\textendash}
-		
-		\textcolor{dpbPrimary2}{\normalsize\insertframesubtitle}
+    		\textcolor{dpbPrimary2}{\insertframetitle}
+    		\else%
+    		\textcolor{dpbPrimary2}{\insertframetitle}
+    		
+    		\textcolor{dpbPrimary2}{\normalsize\insertframesubtitle}
 		\fi
+        
+        \footnotesize{\insertsection \hspace{1mm}
+    		\ifx\insertsubsection\@empty
+            %
+            \else
+            $\rightharpoonup$ \hspace{1mm} \insertsubsection%
+            \fi}
 	\end{beamercolorbox}
 }
 
@@ -117,3 +125,63 @@
 	}}
 }
 
+
+% Frame for new section
+\AtBeginSection[]{
+    \begin{frame}
+    \vfill
+    \begin{beamercolorbox}{title}
+        \begin{centering}
+        \usebeamerfont{title}\inserttitle\par%
+        
+        \textdownarrow
+        
+        \usebeamerfont{title}\insertsectionhead\par%
+        \end{centering}
+    \end{beamercolorbox}
+    \vfill
+    \end{frame}
+}
+
+
+% Frame for new subsection
+\AtBeginSubsection[]{
+    \begin{frame}
+    \vfill
+    \begin{beamercolorbox}{title}
+        \begin{centering}
+            \usebeamerfont{title}\inserttitle\par%
+            
+            \textdownarrow
+            
+            \usebeamerfont{title}\insertsectionhead\par%
+            
+            \textdownarrow
+            
+            \usebeamerfont{title}\insertsubsectionhead\par%
+        \end{centering}
+    \end{beamercolorbox}
+    \vfill
+\end{frame}
+}
+
+
+% Table of contents
+\setbeamertemplate{section in toc}{
+    \begin{beamercolorbox}{normal text}
+        \usebeamerfont{section in toc}%
+        \inserttocsectionnumber \hspace{0pt}
+        \inserttocsection\par%
+    \end{beamercolorbox}
+}
+
+
+\setbeamertemplate{subsection in toc}{
+    \begin{beamercolorbox}{normal text}
+        \usebeamerfont{subsection in toc}%
+        \hspace{2mm} %
+        \inserttocsectionnumber .%
+        \inserttocsubsectionnumber \hspace{0pt}
+        \inserttocsubsection\par%
+    \end{beamercolorbox}
+}
