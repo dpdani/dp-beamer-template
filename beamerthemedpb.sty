@@ -34,15 +34,15 @@
 
 % Fonts
 \usefonttheme{professionalfonts}
-%\setsansfont{Ubuntu}
-\setsansfont{}
-\setmonofont{IBM Plex Mono}
-\setbeamerfont{title}{family=\fontspec{EB Garamond}, size=\huge}
-\setbeamerfont{author}{family=\fontspec{EB Garamond}, shape=\itshape, size=\large}
-\setbeamerfont{frametitle}{family=\fontspec{EB Garamond}}
-\setbeamerfont{institute}{family=\fontspec{EB Garamond}, size=\normalsize, shape=\normalfont}
-\setbeamerfont{date}{family=\fontspec{EB Garamond}, size=\footnotesize, shape=\normalfont}
-\setbeamerfont{footer}{family=\fontspec{EB Garamond}}
+\setmainfont{Latin Modern Roman}
+\setsansfont{Latin Modern Roman}
+\setmonofont{IBM Plex Mono Light}
+\setbeamerfont{title}{family=\fontspec{Anglecia Pro Display}, size=\huge}
+\setbeamerfont{author}{family=\fontspec{Anglecia Pro Display}, shape=\itshape, size=\large}
+\setbeamerfont{frametitle}{family=\fontspec{Anglecia Pro Display}}
+\setbeamerfont{institute}{family=\fontspec{Anglecia Pro Display}, size=\normalsize, shape=\normalfont}
+\setbeamerfont{date}{family=\fontspec{Anglecia Pro Display}, size=\footnotesize, shape=\normalfont}
+\setbeamerfont{footer}{family=\fontspec{Anglecia Pro Display}}
 
 
 % Misc
@@ -88,6 +88,7 @@
 
 % Header of frame
 \setbeamertemplate{frametitle}{
+    \vspace{1mm}
 	\begin{beamercolorbox}[wd=0.99\paperwidth]{frametitle}
 		\ifx\insertframesubtitle\@empty%
     		\textcolor{dpbPrimary2}{\insertframetitle}
@@ -96,6 +97,7 @@
     		
     		\textcolor{dpbPrimary2}{\normalsize\insertframesubtitle}
 		\fi
+                \vspace{0.7mm}
         
         \footnotesize{\insertsection \hspace{1mm}
     		\ifx\insertsubsection\@empty
@@ -127,43 +129,43 @@
 
 
 % Frame for new section
-\AtBeginSection[]{
-    \begin{frame}
-    \vfill
-    \begin{beamercolorbox}{title}
-        \begin{centering}
-        \usebeamerfont{title}\inserttitle\par%
-        
-        \textdownarrow
-        
-        \usebeamerfont{title}\insertsectionhead\par%
-        \end{centering}
-    \end{beamercolorbox}
-    \vfill
-    \end{frame}
-}
+%\AtBeginSection[]{
+%    \begin{frame}
+%    \vfill
+%    \begin{beamercolorbox}{title}
+%        \begin{centering}
+%        \usebeamerfont{title}\inserttitle\par%
+%        
+%        \textdownarrow
+%        
+%        \usebeamerfont{title}\insertsectionhead\par%
+%        \end{centering}
+%    \end{beamercolorbox}
+%    \vfill
+%    \end{frame}
+%}
 
 
 % Frame for new subsection
-\AtBeginSubsection[]{
-    \begin{frame}
-    \vfill
-    \begin{beamercolorbox}{title}
-        \begin{centering}
-            \usebeamerfont{title}\inserttitle\par%
-            
-            \textdownarrow
-            
-            \usebeamerfont{title}\insertsectionhead\par%
-            
-            \textdownarrow
-            
-            \usebeamerfont{title}\insertsubsectionhead\par%
-        \end{centering}
-    \end{beamercolorbox}
-    \vfill
-\end{frame}
-}
+%\AtBeginSubsection[]{
+%    \begin{frame}
+%    \vfill
+%    \begin{beamercolorbox}{title}
+%        \begin{centering}
+%            \usebeamerfont{title}\inserttitle\par%
+%            
+%            \textdownarrow
+%            
+%            \usebeamerfont{title}\insertsectionhead\par%
+%            
+%            \textdownarrow
+%            
+%            \usebeamerfont{title}\insertsubsectionhead\par%
+%        \end{centering}
+%    \end{beamercolorbox}
+%    \vfill
+%\end{frame}
+%}
 
 
 % Table of contents
