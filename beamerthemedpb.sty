@@ -8,7 +8,7 @@
 \usepackage[no-math]{fontspec}
 \usepackage{lastpage}
 \usepackage{graphicx}
-\usepackage{datetime2}
+\usepackage{tabularx}
 
 
 % Colors
@@ -52,80 +52,93 @@
 
 % Title frame
 \setbeamertemplate{title page}{
-	\usebeamercolor{title page}
-	\topskip0pt
-	\vspace*{\fill}
-	\begin{center}
-		\textcolor{dpbTitlePageHeader}{\usebeamerfont{title} \inserttitle}
-		
-		\vskip 0.15cm
-	
-		\textcolor{dpbTitlePageHeader}{\usebeamerfont{subtitle} \insertsubtitle}
-		
-		\vskip 1cm
-	
-		\usebeamerfont{author} \insertauthor
-		
-		\vskip 1cm
-	
-		\textcolor{dpbSecondary}{
-		\usebeamerfont{institute} {\insertinstitute}}
-		%\hskip 0.08cm \textemdash
-		%\textendash
-		
-		\textcolor{dpbSecondary}{\usebeamerfont{date} {\insertdate}}
-	\end{center}
-	\vspace*{\fill}
-	%
+    \usebeamercolor{title page}
+    \topskip0pt
+    \vspace*{\fill}
+    \begin{center}
+        \textcolor{dpbTitlePageHeader}{\usebeamerfont{title} \inserttitle}
+        
+        \vskip 0.15cm
+    
+        \textcolor{dpbTitlePageHeader}{\usebeamerfont{subtitle} \insertsubtitle}
+        
+        \vskip 1cm
+    
+        \usebeamerfont{author} \insertauthor
+        
+        \vskip 1cm
+    
+        \textcolor{dpbSecondary}{
+        \usebeamerfont{institute} {\insertinstitute}}
+        %\hskip 0.08cm \textemdash
+        %\textendash
+        
+        \textcolor{dpbSecondary}{\usebeamerfont{date} {\insertdate}}
+    \end{center}
+    \vspace*{\fill}
+    %
 }
 
 \newcommand{\inserttitleframe}{%
-	\begin{frame}[plain]
-		\titlepage
-	\end{frame}
+    \begin{frame}[plain]
+        \titlepage
+    \end{frame}
 }
 
 
 % Header of frame
 \setbeamertemplate{frametitle}{
     \vspace{1mm}
-	\begin{beamercolorbox}[wd=0.99\paperwidth]{frametitle}
-		\ifx\insertframesubtitle\@empty%
-    		\textcolor{dpbPrimary2}{\insertframetitle}
-    		\else%
-    		\textcolor{dpbPrimary2}{\insertframetitle}
-    		
-    		\textcolor{dpbPrimary2}{\normalsize\insertframesubtitle}
-		\fi
-                \vspace{0.7mm}
+    \begin{beamercolorbox}[wd=\paperwidth]{frametitle}
+        \begin{tabularx}{\paperwidth}{Xr}
+        \ifx\insertframesubtitle\@empty%
+            \textcolor{dpbPrimary2}{\insertframetitle}
+        \else%
+            \textcolor{dpbPrimary2}{\insertframetitle}
+            
+            \textcolor{dpbPrimary2}{\normalsize\insertframesubtitle}
+        \fi
+        \vspace{0.7mm}
         
-        \footnotesize{\insertsection \hspace{1mm}
-    		\ifx\insertsubsection\@empty
-            %
-            \else
-            $\rightharpoonup$ \hspace{1mm} \insertsubsection%
-            \fi}
-	\end{beamercolorbox}
+        \footnotesize{\insertsection \hspace{1mm} \ifx\insertsubsection\@empty%
+        \else
+        $\rightharpoonup$ \hspace{1mm} \insertsubsection%
+        \fi} &
+        \begin{tiny}
+        \begin{tabular}[th]{r}
+        \textcolor{dpbVeryLightGray}{\inserttitle}\\
+        
+        \textcolor{dpbVeryLightGray}{\textcopyright ~ \insertauthor}\\
+        
+        \ifx\insertinstitute\@empty%
+        \else\textcolor{dpbVeryLightGray}{\insertinstitute}\\
+        \fi
+        
+        \textcolor{dpbVeryLightGray}{page {\thepage} of {\pageref{LastPage}}}
+        \end{tabular}
+        \end{tiny}
+        \end{tabularx}
+    \end{beamercolorbox}
 }
 
 
 % Footer
-\setbeamertemplate{footline}{
-	\textcolor{dpbVeryLightGray}{\usebeamerfont{footer}{
-		\noindent\hfil\rule{\textwidth}{.1pt}\hfil
-		\vskip 0.1cm
-		\centering
-		\resizebox{\textwidth}{!}{%
-			\begin{tabular}{@{}lccr@{}}
-				{\hskip 0.1cm \inserttitle} &
-				{\textcopyright} {\insertauthor} &
-				{\insertinstitute} {\textendash} {\insertdate} &
-				page {\thepage} of {\pageref{LastPage}} \hskip 0.1cm
-			\end{tabular}%
-		}
-		\vskip 0.06cm
-	}}
-}
+%\setbeamertemplate{footline}{
+%    \textcolor{dpbVeryLightGray}{\usebeamerfont{footer}{
+%        \noindent\hfil\rule{\textwidth}{.1pt}\hfil
+%        \vskip 0.1cm
+%        \centering
+%        \resizebox{\textwidth}{!}{%
+%            \begin{tabular}{@{}lccr@{}}
+%                {\hskip 0.1cm \inserttitle} &
+%                {\textcopyright} {\insertauthor} &
+%                {\insertinstitute} {\textendash} {\insertdate} &
+%                page {\thepage} of {\pageref{LastPage}} \hskip 0.1cm
+%            \end{tabular}%
+%        }
+%        \vskip 0.06cm
+%    }}
+%}
 
 
 % Frame for new section
